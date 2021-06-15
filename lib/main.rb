@@ -7,7 +7,7 @@ class Matriz
     @largo = largo
     @grid = []
   end
-  
+
   def build
     @ancho.times do |_i|
       @grid.push([])
@@ -29,6 +29,7 @@ class Matriz
   end
 end
 
+# Clase para mostrar la matriz
 class Show < Matriz
   def initialize(ancho, largo, grid)
     super(ancho, largo)
@@ -46,24 +47,24 @@ class Show < Matriz
   end
 end
 
+# Clase para validar las condiciones del juego de la vida
 class Condiciones < Matriz
   def initialize(ancho, largo, grid)
     super(ancho, largo)
     @grid = grid
   end
 
-  #Matar celulas en las orillas
+  # Matar celulas en las orillas
   def matar_bordes
     (0..@ancho - 1).each do |i|
       (0..@largo).each do |x|
         @grid[i][x] = ' ° ' if i.zero? || i == @ancho - 1 || x.zero? || x == @largo - 1
-        
       end
     end
   end
-  
+
   # #Contar los vecinos de las celulas
   # def conteo_vecinos
-    
+
   # end
 end

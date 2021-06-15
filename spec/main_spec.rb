@@ -10,9 +10,9 @@ RSpec.describe Matriz do
   #     expect(juego.suma(5)).to eq(25)
   #   end
   # end
-  
-  let(:matriz) { Matriz.new(5,6) }
-  let(:matrix) { matriz.build}
+
+  let(:matriz) { Matriz.new(5, 6) }
+  let(:matrix) { matriz.build }
 
   context 'validar creacion de matriz' do # Verificar que se cree la matriz
     it 'creacion' do
@@ -21,23 +21,23 @@ RSpec.describe Matriz do
   end
 
   context 'prueba de muestra de matriz' do
-    it "muestra" do
+    it 'muestra' do
       juego = Show.new(5, 6, matrix)
       expect(juego.show) != ''
     end
   end
 
-  context 'validar bordes muertos'do
+  context 'validar bordes muertos' do
     it 'Muerto' do
-      muerto = Condiciones.new(5,6,matrix)
+      muerto = Condiciones.new(5, 6, matrix)
       muerto.matar_bordes
       5.times do |i|
         6.times do |x|
-          if i == 0 || i == 5 || x == 0 || x == 6
-            #it 'Muerto' do
-            expect(matrix[i][x]).to eq' ° '
-            #end 
-          end
+          next unless i == 0 || i == 5 || x == 0 || x == 6
+
+          # it 'Muerto' do
+          expect(matrix[i][x]).to eq ' ° '
+          # end
         end
       end
     end
